@@ -1,0 +1,85 @@
+--- !ruby/object:Gem::Specification 
+name: tpope-pickler
+version: !ruby/object:Gem::Version 
+  version: 0.1.2
+platform: ruby
+authors: 
+- Tim Pope
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-05-16 00:00:00 +02:00
+default_executable: pickler
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: activesupport
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 2.0.0
+    version: 
+- !ruby/object:Gem::Dependency 
+  name: cucumber
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 0.3.96
+    version: 
+description: Synchronize between Cucumber and Pivotal Tracker
+email: ruby@tpope.info
+executables: 
+- pickler
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- README.rdoc
+- MIT-LICENSE
+- pickler.gemspec
+- bin/pickler
+- lib/pickler.rb
+- lib/pickler/feature.rb
+- lib/pickler/runner.rb
+- lib/pickler/tracker.rb
+- lib/pickler/tracker/project.rb
+- lib/pickler/tracker/story.rb
+- lib/pickler/tracker/iteration.rb
+- lib/pickler/tracker/note.rb
+has_rdoc: true
+homepage: http://github.com/tpope/pickler
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.4
+signing_key: 
+specification_version: 2
+summary: PIvotal traCKer Liaison to cucumbER
+test_files: []
+

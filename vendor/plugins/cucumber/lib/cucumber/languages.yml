@@ -1,0 +1,46 @@
+# encoding: UTF-8
+# We use the codes here (prefer 2 letters when possible)
+# http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
+#
+# If you want several aliases for a keyword, just separate them
+# with a | character. Make sure there are no ambiguities in the
+# keywords.
+#
+"en":
+  name: English
+  native: English
+  encoding: UTF-8
+  feature: Feature
+  background: Background
+  scenario: Scenario
+  scenario_outline: Scenario Outline
+  examples: Examples|Scenarios
+  given: Given
+  when: When
+  then: Then
+  and: And
+  but: But
+  space_after_keyword: true
+
+# Please help us keeping the languages below uptodate. The parsers for a language
+# that is missing a keyword will expect the English word until the missing word(s)
+# are added.
+#
+# Please keep the grammars in alphabetical order by name from here and down.
+
+
+"es":
+  name: Spanish
+  native: español
+  encoding: UTF-8
+  background: Antecedentes|Contexto
+  feature: Característica|Funcionalidad
+  scenario: Escenario
+  scenario_outline: Esquema del escenario
+  examples: Ejemplos
+  given: Dado|Dada
+  when: Cuando
+  then: Entonces
+  and: Y
+  but: Pero
+  space_after_keyword: true

@@ -1,0 +1,8 @@
+
+  production:
+    app_name: <%= PROJECT_NAME %>
+    s3_bucket: <%= PROJECT_NAME %>_backups
+    aws_access_key_id: <%= AWS_ACCESS_KEY %>
+    aws_secret_access_key: <%= AWS_SECRET_ACCESS_KEY %>
+    verbose: true
+    static_paths: "public/static public/users"

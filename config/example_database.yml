@@ -1,0 +1,21 @@
+
+development:
+  adapter: sqlite3
+  database: <%= PROJECT_NAME %>_development.sqlite3
+  
+test: &TEST
+  adapter: sqlite3
+  database: db/<%= PROJECT_NAME %>_test.sqlite3
+
+  
+staging:
+  adapter: sqlite3
+  database: db/<%= PROJECT_NAME %>_staging.sqlite3
+
+  
+production:
+  adapter: sqlite3
+  database: db/<%= PROJECT_NAME %>__production.sqlite3
+
+cucumber:
+  <<: *TEST
