@@ -5,7 +5,7 @@ Feature: Registration
 	I want a registration process
 	
 
-@current
+@webrat
 Scenario: Registration
 
 	  When I go to "/"

@@ -9,14 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091026154800) do
+ActiveRecord::Schema.define(:version => 20091026182655) do
 
-  create_table "orchards", :force => true do |t|
+  create_table "emails", :force => true do |t|
+    t.string   "from"
+    t.string   "to"
+    t.string   "cc"
+    t.text     "mail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "regions", :force => true do |t|
     t.string   "name"
-    t.integer  "area"
-    t.string   "longitude"
-    t.string   "latitude"
-    t.boolean  "used"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,6 +36,10 @@ ActiveRecord::Schema.define(:version => 20091026154800) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
+    t.string   "activation_code",           :limit => 40
+    t.datetime "activated_at"
+    t.string   "url"
+    t.integer  "region_id"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

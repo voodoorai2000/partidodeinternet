@@ -1,6 +1,6 @@
 numero = '(the|two|three|a)'
 cuyo = '(?:cuy[oa]s?|que tienen? como)'
-model_names = "(course templates?|editions?|registrations?|requests?|students?|users?|category|categories|subcategory|subcategories)"
+model_names = "(regions?|users?)"
 
 # Creación simple con nombre opcional
 #Given /^(?:que tenemos )?(#{numero}) (?!.+ #{cuyo})(.+?)(?: (?:llamad[oa]s? )?['"](.+)["'])?$/i do |numero, modelo, nombre|
@@ -132,7 +132,8 @@ When /^I visit the ([\w\/]+) page for that (.+)$/i do |accion, modelo|
   action = accion.to_crud_action or raise(MundoPepino::CrudActionNotMapped.new(accion))
   resource = last_mentioned_of(modelo)
   if resource
-    do_visit eval("#{action}_#{resource.mr_singular}_path(resource)")
+    #do_visit eval("#{action}_#{resource.mr_singular}_path(resource)")
+    do_visit eval("#{action}_#{resource.class.name.underscore}_path(resource)")
   else
     MundoPepino::ResourceNotFound.new("model #{modelo}")
   end
@@ -518,10 +519,11 @@ end
 
 Given /^that I'm logged in$/ do
   user = Factory(:user)
+  pile_up user
   visit "login"
   fill_in "login", :with => user.login
   fill_in "password", :with => "secret"
-  click_button "Login"
+  click_button "Log in"
 end
 
 Given /^que estoy logeado como (?:el |la )?([^\"]*) "([^\"]*)"$/ do |modelo, nombre|
@@ -694,6 +696,7 @@ end
 Then /^that #{model_names} will have the following associations:$/ do |model_name, tabla|  
   tabla.hashes.each do |hash|
     hash.each do |attribute, value|
+      debugger
       last_mentioned_should_have_parent(attribute, value)
     end
   end

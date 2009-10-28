@@ -77,7 +77,7 @@ end
 
 MundoPepino::ModelsToClean = [
     # ENTRADA AUTO-GENERADA PARA Orchard
-    
+    User
     # (TODO: quitar la coma final si es el primer modelo)
 
   # MODELOS PARA LIMPIAR antes de cada escenario,
