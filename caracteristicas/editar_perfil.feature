@@ -5,7 +5,7 @@ Feature: Editar Perfil
 	I want...
 	
 
-@current
+@webrat
 Scenario: Editar Pefil
    Given a region "Comunidad Valenciana"
  	   And that I'm logged in
