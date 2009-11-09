@@ -52,3 +52,20 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+form div{
+	display:block;
+	width: 325px;
+	margin-bottom: 10px;
+}
+
+form div input{
+	float: right;
+	width: 230px;
+	height: 14px;
+}
+
+form div textarea{
+	float: right;
+	width: 234px;
+	height: 50px;
+}

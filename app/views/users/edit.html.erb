@@ -1,12 +1,21 @@
 <% form_for @user do |f| -%>
-  <%= f.label :name, "Nombre" %>
-	<%= f.text_field :name, :id => :name %>
+  <div>
+		<%= f.label :name, "Nombre" %>
+		<%= f.text_field :name, :id => :name %>
+	</div>
 	
-	<%= f.label :url, "Url" %>
-	<%= f.text_field :url, :id => :url %>
+	<div>
+		<%= f.label :url, "Url" %>
+		<%= f.text_field :url, :id => :url %>
+	</div>
 	
-	<%= f.label :region, "Comunidad Autónoma" %>
-	<%= f.select :region_id, Region.all.collect {|region| [region.name, region.id]} %>
+	<div>
+		<%= f.label :region, "Comunidad Autónoma" %>
+		<%= f.select :region_id, Region.all.collect {|region| [region.name, region.id]} %>
+	</div>
 	
-	<%= f.submit "Editar" %>
+	<div>
+		<%= f.submit "Editar" %>
+	</div>
+	
 <% end -%>
