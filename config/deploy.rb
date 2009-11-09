@@ -9,19 +9,17 @@
   set :keep_releases, 10
   
   set :scm, :git
-  set :repository,  "git@github.com:voodoorai2000/#{PROJECT_NAME}.git"
+  set :repository,  "git@github.com:voodoorai2000/partidodeinternet.git"
   set :branch, "master"
   set :deploy_via, :checkout
   
   set :user, "deploy"
-  set :password, "<password>"
   set :port, "32200"  
   set :runner, "deploy"
   
   desc "create symbolic links for files outside of version control"
   task :create_symbolic_links, :roles => :app do
     run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{deploy_to}/#{shared_dir}/config/initializers/hoptoad.rb #{release_path}/config/initializers/hoptoad.rb" 
     run "ln -nfs #{deploy_to}/#{shared_dir}/db/schema.rb #{release_path}/db/schema.rb" 
   end
   
@@ -30,4 +28,20 @@
     run "touch #{current_path}/tmp/restart.txt"
   end
     
-  after "deploy", ["create_symbolic_links", "restart"]
+    
+  namespace :deploy do
+    %w(start restart).each { |name| task name, :roles => :app do mod_rails.restart end }
+  
+  end
+  
+  namespace :mod_rails do
+    desc <<-DESC
+    Restart the application altering tmp/restart.txt for mod_rails.
+    DESC
+    task :restart, :roles => :app do
+      run "touch  #{release_path}/tmp/restart.txt"
+    end
+  end
+
+  after "deploy:update_code", "create_symbolic_links"
+  after "deploy:update", "deploy:cleanup" 
