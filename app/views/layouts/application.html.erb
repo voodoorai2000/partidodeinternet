@@ -7,7 +7,11 @@
     <%= stylesheet_link_tag 'scaffold', :media => 'all' %>
   </head>
   <body>
-    <%= render :partial => 'layouts/flashes' -%>
-    <%= yield %>
+		<div id="page">
+			<div id="wrapper">
+    		<%= render :partial => 'layouts/flashes' -%>
+    		<%= yield %>
+			</div>
+		</div>
   </body>
 </html>

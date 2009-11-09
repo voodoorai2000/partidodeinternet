@@ -69,3 +69,21 @@ form div textarea{
 	width: 234px;
 	height: 50px;
 }
+
+
+#page {
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	width: 100%;
+	margin-top: -200px;
+	text-align: center;
+	min-width: 900px; 
+}
+#wrapper {
+	position: relative;
+	text-align: center;
+	width: 100%;
+	height: 380px;
+	margin: 0px auto;
+}
