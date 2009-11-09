@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
+  before_filter :login_required, :only => :edit
   include AuthenticatedSystem
   
   def edit
@@ -40,8 +41,9 @@ class UsersController < ApplicationController
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
-      flash[:notice] = "Signup complete! Please sign in to continue."
-      redirect_to '/login'
+      flash[:notice] = "Cuenta activada, gracias!"
+      self.current_user = user
+      redirect_to edit_user_url(user)
     when params[:activation_code].blank?
       flash[:error] = "The activation code was missing.  Please follow the URL from your email."
       redirect_back_or_default('/')
