@@ -526,12 +526,13 @@ Given /^that I'm logged in$/ do
   click_button "Log in"
 end
 
-Given /^que estoy logeado como (?:el |la )?([^\"]*) "([^\"]*)"$/ do |modelo, nombre|
-  resource = last_mentioned_of(modelo, nombre)
+#Given /^que estoy logeado como (?:el |la )?([^\"]*) "([^\"]*)"$/ do |modelo, nombre|
+Given /^that I'm logged in as (?:the)?([^\"]*) "([^\"]*)"$/ do |model, name|
+  resource = last_mentioned_of(model, name)
   visit "login"
   fill_in "login", :with => resource.email
-  fill_in "password", :with => resource.password
-  click_button "Acceder"
+  fill_in "password", :with => "secret"
+  click_button "Log in"
 end
 
 #Why is this method so specfici? Am I doing something wrong in my design?
@@ -696,7 +697,6 @@ end
 Then /^that #{model_names} will have the following associations:$/ do |model_name, tabla|  
   tabla.hashes.each do |hash|
     hash.each do |attribute, value|
-      debugger
       last_mentioned_should_have_parent(attribute, value)
     end
   end

@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   before_validation :set_password, :on => :create
   
   def set_password
-    self.password = self.password_confirmation = random_string
+    self.password = self.password_confirmation = random_string if self.password.blank? #useful for tests
   end
   
   def random_string(length=10)
