@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     success = @user && @user.save
     if success && @user.errors.empty?
       flash[:notice] = "¡Gracias! Te hemos mandado un email para activar tu cuenta."
-      redirect_to @user
+      redirect_to thank_you_url
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'

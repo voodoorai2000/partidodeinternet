@@ -1,3 +1,5 @@
+<h2>Tus Datos</h2>
+
 <% form_for @user do |f| -%>
   <div>
 		<%= f.label :name, "Nombre" %>
@@ -10,12 +12,12 @@
 	</div>
 	
 	<div>
-		<%= f.label :region, "Comunidad Autónoma" %>
+		<%= f.label :region, "Region" %>
 		<%= f.select :region_id, Region.all.collect {|region| [region.name, region.id]} %>
 	</div>
 	
 	<div>
-		<%= f.submit "Editar" %>
+		<%= f.submit "Enviar", :class => "button" %>
 	</div>
 	
 <% end -%>
