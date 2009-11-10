@@ -90,7 +90,7 @@ Rails::Initializer.run do |config|
   
   # Add the vendor/gems/*/lib directories to the LOAD_PATH
   config.load_paths += Dir.glob(File.join(RAILS_ROOT, 'vendor', 'gems', '*', 'lib'))
- 
+  
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
@@ -123,4 +123,5 @@ Rails::Initializer.run do |config|
  
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
+  config.i18n.default_locale = :es
 end

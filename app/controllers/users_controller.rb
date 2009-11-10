@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       flash[:notice] = "¡Gracias! Te hemos mandado un email para activar tu cuenta."
       redirect_to thank_you_url
     else
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash[:error]  = ""
       render :action => 'new'
     end
   end

@@ -1,0 +1,35 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+es:
+  activerecord: 
+    models: 
+      user: usuario
+    errors: 
+      messages: 
+        record_invalid: "La validaci\xC3\xB3n fall\xC3\xB3: {{errors}}"
+        greater_than_or_equal_to: debe ser mayor que o igual a {{count}}
+        confirmation: "no coincide con la confirmaci\xC3\xB3n"
+        less_than_or_equal_to: debe ser menor que o igual a {{count}}
+        blank: no puede estar en blanco
+        exclusion: "est\xC3\xA1 reservado"
+        invalid: "no es v\xC3\xA1lido"
+        odd: debe ser impar
+        empty: "no puede estar vac\xC3\xADo"
+        wrong_length: no tiene la longitud correcta ({{count}} caracteres exactos)
+        even: debe ser par
+        too_short: "es demasiado corto ({{count}} caracteres m\xC3\xADnimo)"
+        less_than: debe ser menor que {{count}}
+        equal_to: debe ser igual a {{count}}
+        greater_than: debe ser mayor que {{count}}
+        too_long: "es demasiado largo ({{count}} caracteres m\xC3\xA1ximo)"
+        accepted: debe ser aceptado
+        taken: "ya est\xC3\xA1 en uso"
+        inclusion: "no est\xC3\xA1 incluido en la lista"
+        not_a_number: "no es un n\xC3\xBAmero"
+      attributes: 
+      template: 
+        body: "Se encontraron problemas con los siguientes campos:"
+        header: 
+          one: "no se pudo guardar este {{model}} porque se encontr\xC3\xB3 1 error"
+          other: no se pudo guardar este {{model}} porque se encontraron {{count}} errores
