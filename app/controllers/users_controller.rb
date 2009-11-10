@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
   before_filter :login_required, :only => :edit
-  
   
   def edit
     @user = User.find(params[:id])
@@ -21,7 +19,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # render new.rhtml
   def new
     @user = User.new
   end
