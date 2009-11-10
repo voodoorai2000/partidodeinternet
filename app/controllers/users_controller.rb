@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_filter :login_required, :only => :edit
   
+  def  index
+    @users = User.all
+  end
+  
   def edit
     @user = User.find(params[:id])
   end

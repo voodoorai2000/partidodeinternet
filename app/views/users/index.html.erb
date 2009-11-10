@@ -1,0 +1,13 @@
+<h2><%= User.count %> Usuarios Registrados</h2>
+
+<ul>
+	<% for user in @users do %>
+		<% content_tag_for :ul, user do %>
+		  <li>Nombre: <%= user.name %></li>
+		  <li>Email: <%= user.email %></li>
+		  <li>URL: <%= user.url %></li>
+		  <li>Region: <%= user.region %></li>
+		<br/>
+		<% end %>
+	<% end %>
+</ul>
