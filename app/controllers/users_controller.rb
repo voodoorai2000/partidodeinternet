@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   before_filter :login_required, :only => :edit
-  include AuthenticatedSystem
+  
   
   def edit
     @user = User.find(params[:id])
