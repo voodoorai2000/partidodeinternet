@@ -15,7 +15,7 @@ Scenario: Editar Pefil
 	   And I fill in name with "Hector Perez"
 		 And I fill in url with "http://arpahector.com"
 		 And I select user_region_id as "Comunidad Valenciana"
-	   And I press the "Editar" button
+	   And I press the "Enviar" button
 	  Then we will have the following user:
 	 			 | name         | url                   |
 	 			 | Hector Perez | http://arpahector.com |
