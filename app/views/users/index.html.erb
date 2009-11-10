@@ -1,4 +1,4 @@
-<h2><%= User.count %> Usuarios Registrados</h2>
+<h2><%= pluralize(User.count, 'Usuario Registrado', 'Usuarios Registrados') %></h2>
 
 <ul>
 	<% for user in @users do %>
