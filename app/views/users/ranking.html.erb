@@ -2,7 +2,7 @@
 <ul>
   <% @user_regions.each do |region, users| %>
     <% content_tag_for :li, region do %>
-  		<%= "#{region.name} (#{users.count})"%>
+  		<%= "#{region.name} (#{users.size})"%>
   	<% end %>
   <% end %>
 </ul>
