@@ -1,4 +1,5 @@
 numero = '(the|two|three|a|\d+)'
+numbers = '(the|two|three|a|\d+)'
 cuyo = '(?:cuy[oa]s?|que tienen? como)'
 model_names = "(regions?|users?)"
 
@@ -57,7 +58,9 @@ Given /^que dich[oa]s? (.+) tienen? como (.+) ['"](.*)["'](?:.+)?$/i do |modelo,
   end
 end
 
-Given /^que dich[oa]s? (.+) tienen? (un|una|dos|tres|cuatro|cinco|\d+) (.+?)(?: (?:llamad[oa]s? )?['"](.+)["'])?$/i do |modelo_padre, numero, modelo_hijos, nombres|
+#Given /^que dich[oa]s? (.+) tienen? (un|una|dos|tres|cuatro|cinco|\d+) (.+?)(?: (?:llamad[oa]s? )?['"](.+)["'])?$/i do |modelo_padre, numero, modelo_hijos, nombres|
+#that region has 5 users
+Given /^that #{model_names} has #{numbers} (.+?)(?: (?:llamad[oa]s? )?['"](.+)["'])?$/i do |modelo_padre, numero, modelo_hijos, nombres|
   if mentioned = last_mentioned_of(modelo_padre.to_unquoted)
     children_model = modelo_hijos.to_unquoted.to_model
     resources = (mentioned.is_a?(Array) ? mentioned : [mentioned])
@@ -159,7 +162,6 @@ negative_lookahead = '(?:la|el) \w+ del? |su p[aá]gina|su portada'
 #I go to "course_templates"
 #When /^(?:que )?visito (?!#{negative_lookahead})(.+)$/i do |pagina|
 When /^I go to ['"]([^\"]+)["']$/i do |pagina|
-
   do_visit pagina.to_unquoted.to_url
 end
 
@@ -279,6 +281,7 @@ end
 #############################################################################
 #añadido ver[eé]
 veo_o_no = '(?:no )?(?:veo|debo ver|deber[ií]a ver|ver[eé])'
+I_will_or_will_not_see = '(?:no )?(?:veo|debo ver|deber[ií]a ver|ver[eé])'
 
 #Then /^(#{veo_o_no}) el texto (.+)?$/i do |should, text|
 #And I will see the text "Registration created succesfully."
@@ -944,6 +947,16 @@ Then /^(#{veo_o_no}) (?:a) (?:los|las) ([^\"]+) "([^\"]*)" en la seccion "([^\"]
   end
 end
 
+#vere a los abogado "Ana, Juana" en ese orden
+#Then /^(#{veo_o_no}) (?:a) (?:los|las) ([^\"]+) "([^\"]*)" en ese orden$/ do |should, modelo, nombres|
+#I will see the regions "Islas Baleares, Comunidad Valenciana" in that order
+Then /^I (will not|will) see (?:the )?([^\"]+) "([^\"]*)" in that order$/ do |should, modelo, nombres|
+  model_name = modelo.to_model.name.underscore
+  split_and_strip(nombres).each_with_index do |nombre, index|
+    resource = modelo.to_model.find_by_name(nombre)
+    response.body.send shouldify(should), have_tag("##{model_name}_#{resource.id}:nth-child(#{index+1})")
+  end
+end
 
 #vere los campos "direccion, ciudad, codigo postal y areas de practica" para el despacho "Faus"
 Then /^vere los campos "([^\"]*)" para #{articulo_definido} (.+) "([^\"]*)"$/ do |campos, modelo, nombre|

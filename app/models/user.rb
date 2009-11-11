@@ -3,6 +3,10 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   belongs_to :region
   
+  def self.ranking
+    all.group_by(&:region).sort_by{|region, users| users.count}.reverse
+  end
+  
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken

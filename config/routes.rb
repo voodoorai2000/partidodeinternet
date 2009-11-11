@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   map.thank_you '/thank_you', :controller => 'users', :action => 'thank_you'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate "/activate/:activation_code", :controller => "users", :action => "activate", :activation_code => nil
+  
+  map.ranking "/ranking", :controller => "users", :action => "ranking"
   map.resources :users
 
   map.resource :session

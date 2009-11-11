@@ -59,6 +59,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def ranking
+    @user_regions = User.ranking
+  end
+  
   protected
   
   def load_user
