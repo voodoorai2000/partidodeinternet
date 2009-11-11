@@ -3,8 +3,10 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   belongs_to :region
   
+  named_scope :with_region, :conditions => :region_id
+  
   def self.ranking
-    all.group_by(&:region).sort_by{|region, users| users.count}.reverse
+    with_region.group_by(&:region).sort_by{|region, users| users.count}.reverse
   end
   
   include Authentication

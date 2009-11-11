@@ -17,3 +17,8 @@ Scenario: Ranking
 	  Then I will see the regions "Islas Baleares, Comunidad Valenciana" in that order
 	  Then I will see the text "Comunidad Valenciana (5)"
 		Then I will see the text "Islas Baleares (10)"
+		
+Scenario: Viewing ranking with a user that hasn't chosen a region
+    Given a user
+    When I go to "/ranking"
+    Then I will see the text "Ranking"
