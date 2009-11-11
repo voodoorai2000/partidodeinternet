@@ -1,4 +1,4 @@
-numero = '(the|two|three|a)'
+numero = '(the|two|three|a|\d+)'
 cuyo = '(?:cuy[oa]s?|que tienen? como)'
 model_names = "(regions?|users?)"
 
@@ -137,25 +137,18 @@ When /^I visit the ([\w\/]+) page for that (.+)$/i do |accion, modelo|
   else
     MundoPepino::ResourceNotFound.new("model #{modelo}")
   end
-  
-  #action = accion.to_crud_action or raise(MundoPepino::CrudActionNotMapped.new(accion))
-  #if action != 'new'
-  #  nombre, modelo = modelo, nil unless nombre
-  #  resource = if modelo && modelo.to_unquoted.to_model
-  #    last_mentioned_of(modelo)
-  #  else
-  #    last_mentioned_called(nombre.to_unquoted)
-  #  end
-  #  if resource
-  #    do_visit eval("#{action}_#{resource.mr_singular}_path(resource)")
-  #  else
-  #    MundoPepino::ResourceNotFound.new("model #{modelo}, name #{nombre}")
-  #  end
-  #else
-  #  model = modelo.to_unquoted.to_model or raise(MundoPepino::ModelNotMapped.new(modelo))
-  #  pile_up model.new
-  #  do_visit eval("#{action}_#{model.name.underscore}_path")
-  #end
+end
+
+#I visit the edit page for user "Peter"
+When /^I visit the ([\w\/]+) page of #{model_names} ['"]([^\"]+)["']$/i do |accion, modelo, nombre|
+  action = accion.to_crud_action or raise(MundoPepino::CrudActionNotMapped.new(accion))
+  resource = last_mentioned_of(modelo, nombre)
+  if resource
+    #do_visit eval("#{action}_#{resource.mr_singular}_path(resource)")
+    do_visit eval("#{action}_#{resource.class.name.underscore}_path(resource)")
+  else
+    MundoPepino::ResourceNotFound.new("model #{modelo}")
+  end
 end
 
 When /^(?:que )?visito su (?:p[áa]gina|portada)$/i do
@@ -535,6 +528,14 @@ Given /^that I'm logged in as (?:the)?([^\"]*) "([^\"]*)"$/ do |model, name|
   click_button "Log in"
 end
 
+Given /^that I'm logged in as "([^\"]*)"$/ do |name|
+  resource = last_mentioned_of("user", name)
+  visit "login"
+  fill_in "login", :with => resource.email
+  fill_in "password", :with => "secret"
+  click_button "Log in"
+end
+
 #Why is this method so specfici? Am I doing something wrong in my design?
 #maybe the routes should have the same name?
 Given /^que #{articulo_definido} (.+) tiene asociad[oa] #{articulo_definido} (?:foto|logo) "(.+)"$/ do |modelo, nombre_imagen|
@@ -567,12 +568,29 @@ end
 
 
 
-When /^me logeo como (?:ese|el) ([^\"]*)$/ do |modelo|
+#When /^me logeo como (?:ese|el) ([^\"]*)$/ do |modelo|
+When /^I login as (?:ese|el) ([^\"]*)$/ do |modelo|
   resource = last_mentioned_of(modelo)
   visit "login"
   fill_in "login", :with => resource.email
   fill_in "password", :with => resource.password
   click_button "Acceder"
+end
+
+When /^I login as "([^\"]*)"$/ do |name|
+  resource = last_mentioned_of("user", name)
+  visit "login"
+  fill_in "login", :with => resource.email
+  fill_in "password", :with => "secret"
+  click_button "Log in"
+end
+
+When /^I login as an admin$/ do
+  resource = Factory(:admin)
+  visit "login"
+  fill_in "login", :with => resource.email
+  fill_in "password", :with => "secret"
+  click_button "Log in"
 end
 
 #"Extended to take into account multiple associations to different belongs_to models
@@ -723,15 +741,17 @@ end
 
 #sere redirigido a la pagina de administracion del despacho
 estare_en = '(?:sere redirigido a|estar[eé] en)'
-Then /^#{estare_en} la pagina de (.+) del ([^\"]+)$/ do |accion, model|
+will_be_in = '(?:I will be redirected to|I will be in|I will be at)'
+Then /^#{estare_en} (.+) page of the ([^\"]+)$/ do |accion, model|
   action = accion.to_member_action or raise(MundoPepino::MemberActionNotMapped.new(accion))
   resource = last_mentioned_of(model)
   URI.parse(current_url).path.should == eval("#{action}_#{resource.mr_singular}_path(resource)")
 end
 
-#estare en la pagina de administracion del despacho "Faus"
-Then /^#{estare_en} la pagina de (.+) del (.+) "([^\"]*)"$/ do |accion, model, nombre|
-  action = accion.to_member_action or raise(MundoPepino::MemberActionNotMapped.new(accion))
+#I will be at the edit page of user "Hector"
+#Then /^#{estare_en} la pagina de (.+) del (.+) "([^\"]*)"$/ do |accion, model, nombre|
+Then /^#{will_be_in} the (.+) page of (.+) "([^\"]*)"$/ do |accion, model, nombre|
+  action = accion.to_crud_action or raise(MundoPepino::MemberActionNotMapped.new(accion))
   resource = last_mentioned_of(model, nombre)
   URI.parse(current_url).path.should == eval("#{action}_#{resource.class.name.underscore}_path(resource)")
 end
@@ -743,8 +763,9 @@ Then /^#{estare_en} la pagina (?:del|de la) (.+) "([^\"]*)"$/ do |modelo, nombre
 end
 
 #sere redirigido a "/login"
-Then /^#{estare_en} "(.+)"$/ do |pagina|
-  URI.parse(current_url).path.should == pagina.to_unquoted.to_url
+#Then /^#{estare_en} "(.+)"$/ do |pagina|
+Then /^#{will_be_in} "(.+)"$/ do |page|
+  URI.parse(current_url).path.should == page.to_unquoted.to_url
 end
 
 #Vista sin utilizar tablas solo ids

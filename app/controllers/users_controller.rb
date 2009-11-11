@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :only => :edit
+  before_filter :load_user, :only => [:edit, :update, :show]
+  before_filter :login_required, :authorized, :only => :edit
   
   def  index
     @users = User.all
@@ -57,4 +58,19 @@ class UsersController < ApplicationController
       redirect_back_or_default('/')
     end
   end
+  
+  protected
+  
+  def load_user
+    @user = User.find(params[:id])
+  end
+  
+  def authorized
+    unless
+      current_user == @user or 
+      current_user.is_admin?
+      redirect_to "/login"
+    end
+  end
+    
 end

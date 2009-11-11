@@ -4,7 +4,7 @@ Feature: Listado de Usuarios
   Como un...
   Quiero...
 
-  @current
+  @webrat
   Scenario: Ver todos los usuarios
   	 Given the following users:
   				 | name   | email          | url                 |
