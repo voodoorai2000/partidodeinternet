@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   named_scope :with_region, :conditions => :region_id
   
   def self.ranking
-    with_region.group_by(&:region).sort_by{|region, users| users.count}.reverse
+    with_region.group_by(&:region).sort_by{|region, users| users.size}.reverse
   end
   
   include Authentication
