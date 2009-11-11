@@ -3,5 +3,9 @@
   <li>Email: <%= user.email %></li>
   <li>URL: <%= user.url %></li>
   <li>Region: <%= user.region %></li>
+	<% if current_user and current_user.is_admin? %>
+		<li><%= link_to "Edit", edit_user_path(user) %></li>
+		<li><%= link_to "Delete", user_path(user), :method => :delete %></li>
+	<% end %>
 <br/>
 <% end %>

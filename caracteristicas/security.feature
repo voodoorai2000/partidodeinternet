@@ -17,3 +17,17 @@ Feature: Security
 	        | "Hector" | Hector  | I will be at the edit page of user "Hector" |
 	        | an admin | Hector  | I will be at the edit page of user "Hector" |
 	        | "Hector" | Jose    | I will be redirected to "/login"            |
+	
+	
+	Scenario Outline: Access to edit a profile
+		  Given a user "Hector"
+		 	 When I login as <login>
+	   	And I go to "/users"
+	     Then <action>
+  			 And <action2> 
+  
+	Examples:
+	        | login    | action                         | action2                          |
+	        | "Hector" | I will not see the text "edit" | I will not see the text "delete" |
+	        | an admin | I will see the text "edit"     | I will see the text "delete"     |
+  

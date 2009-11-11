@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :load_user, :only => [:edit, :update, :show]
+  before_filter :load_user, :only => [:edit, :update, :show, :destroy]
   before_filter :login_required, :authorized, :only => :edit
   
   def  index
@@ -57,6 +57,11 @@ class UsersController < ApplicationController
       flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
       redirect_back_or_default('/')
     end
+  end
+  
+  def destroy
+    @user.delete
+    redirect_to "/users"
   end
   
   def ranking
