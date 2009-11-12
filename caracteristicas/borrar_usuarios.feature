@@ -1,4 +1,4 @@
-@webrat
+@selenium
 Feature: Delete User
 
 	In order delete users that are not coming to the event
@@ -9,5 +9,5 @@ Feature: Delete User
       Given 2 users "Hector, Jose"
   	   When I login as an admin
   	    And I go to "/users"
-  	    And I click on link "delete" next to user "Jose"
+  	    And I click on link "Borrar" next to user "Jose"
    	   Then there will not be a user "Jose" in the db

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:notice] = "Gracias, tus datos se han actualizado correctamente."
-      redirect_to @user
+      redirect_to users_path
     else
       render :action => :edit
     end

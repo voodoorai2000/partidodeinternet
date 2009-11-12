@@ -26,10 +26,11 @@ Feature: Security
   			And <action2> 
   
 	Examples:
-	        | login    | action                                               | action2                                                |
-	        | "Hector" | next to user "Hector" I will see the text "edit"     | next to user "Hector" I will see the text "delete"     |
-	        | "Jose"   | next to user "Hector" I will not see the text "edit" | next to user "Hector" I will not see the text "delete" |
-	        | an admin | I will see the text "edit"                           | I will see the text "delete"                           |
+	        | login    | action                                                 | action2                                                |
+	        | "Hector" | next to user "Hector" I will see the text "editar"     | next to user "Hector" I will see the text "borrar"     |
+	        | "Jose"   | next to user "Hector" I will not see the text "editar" | next to user "Hector" I will not see the text "borrar" |
+	        | an admin | I will see the text "editar"                           | I will see the text "borrar"                           |
+
 
 
   

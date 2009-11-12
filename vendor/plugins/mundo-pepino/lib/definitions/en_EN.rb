@@ -287,7 +287,7 @@ I_will_or_will_not_see = '(?:no )?(?:veo|debo ver|deber[ií]a ver|ver[eé])'
 #And I will see the text "Registration created succesfully."
 Then /^I (will not|will) see the text ['"](.*)["']$/i do |should, text|
   sleep(1) #para selenium
-  eval('response.body.send(shouldify(should))') =~ /#{Regexp.escape(text.to_unquoted.to_translated)}/m
+  eval('response.body.send(shouldify(should))') =~ /#{Regexp.escape(text.to_unquoted.to_translated)}/mi
 end
 
 #next to user "Hector" I will see the text "edit" 
@@ -421,6 +421,7 @@ end
 #Then /^#{en_bbdd_tenemos} (un|una|dos|tres|cuatro|cinco|\d+) ([^ ]+)(?: (?:llamad[oa]s? )?['"](.+)["'])?$/ do |numero, modelo, nombre|
 Then /^there (will not|will) be a #{model_names} (?:['"](.+)["'])?(?: in the db)?$/ do |should, modelo, nombre|
 # there will not be a course "Ruby Introduction" in the db
+  sleep(1) #selenium
   model = modelo.to_unquoted.to_model
   conditions = if nombre
     {:conditions => [ "#{field_for(model, 'nombre')}=?", nombre ]}

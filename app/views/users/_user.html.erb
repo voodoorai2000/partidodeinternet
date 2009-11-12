@@ -5,8 +5,8 @@
   <li>Region: <%= user.region %></li>
 	
 	<% if is_authorized?(user) %>
-		<li><%= link_to "Edit", edit_user_path(user) %></li>
-		<li><%= link_to "Delete", user_path(user), :method => :delete %></li>
+		<li><%= link_to "Editar", edit_user_path(user) %></li>
+		<li><%= link_to "Borrar", user_path(user), :method => :delete, :confirm => "¿Seguro que te quieres borrar de la lista?" %></li>
 	<% end %>
 
 <br/>
