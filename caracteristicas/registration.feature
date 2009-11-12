@@ -13,5 +13,5 @@ Scenario: Registration
 	   And I press the "Registrate" button
 	  Then I will see the text "¡Gracias! Te hemos mandado un email para activar tu cuenta."
 	  Then an email will be sent to "voodoorai2000@gmail.com"
-	   And the subject will be "Bienvenido a la tribu"
+	   And the subject will be "Bienvenido al Partido de Internet"
 	   

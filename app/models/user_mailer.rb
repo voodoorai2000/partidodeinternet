@@ -2,7 +2,7 @@ class UserMailer < ActionMailer::Base
   
   def signup_notification(user)
     setup_email(user)
-    @subject    += 'Bienvenido a la tribu'
+    @subject    += 'Bienvenido al Partido de Internet'
   
     @body[:url]  = "#{host}/activate/#{user.activation_code}"
   
@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
   
   def activation(user)
     setup_email(user)
-    @subject    += 'Your account has been activated!'
+    @subject    += 'Tu cuenta está activada'
     @body[:url]  = "#{host}"
   end
   
