@@ -13,5 +13,7 @@ Feature: Listado de Usuarios
   		When I go to "/users"
       Then I will see the text "2 Usuarios Registrados"
   		Then I will see the user "Ana"
+			 But I will not see the text "ana@gmail.com"
   		 And I will see the user "Jose"
+			 But I will not see the text "jose@gmail.com"
   
