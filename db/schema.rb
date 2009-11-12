@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091111192353) do
+ActiveRecord::Schema.define(:version => 20091112004343) do
 
   create_table "emails", :force => true do |t|
     t.string   "from"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20091111192353) do
     t.string   "url"
     t.integer  "region_id"
     t.boolean  "admin"
+    t.string   "password"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
