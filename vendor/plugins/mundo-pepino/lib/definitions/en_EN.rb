@@ -285,9 +285,16 @@ I_will_or_will_not_see = '(?:no )?(?:veo|debo ver|deber[ií]a ver|ver[eé])'
 
 #Then /^(#{veo_o_no}) el texto (.+)?$/i do |should, text|
 #And I will see the text "Registration created succesfully."
-Then /^I (will not|will) see the text (.+)?$/i do |should, text|
+Then /^I (will not|will) see the text ['"](.*)["']$/i do |should, text|
   sleep(1) #para selenium
   eval('response.body.send(shouldify(should))') =~ /#{Regexp.escape(text.to_unquoted.to_translated)}/m
+end
+
+#next to user "Hector" I will see the text "edit" 
+Then /^next to #{model_names} ['"]?(.*)["'] I (will not|will) see the text ['"](.*)["']$/i do |model, name, should, text|
+  resource = last_mentioned_of(model, name)
+  resource_html_id = "##{model.to_model.name.underscore}_#{resource.id}"
+  response.body.send(shouldify(should), have_tag(resource_html_id, /#{text}/i))
 end
 
 leo_o_no = '(?:no )?(?:leo|debo leer|deber[íi]a leer)'
