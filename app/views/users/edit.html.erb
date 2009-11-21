@@ -7,6 +7,11 @@
 	</div>
 	
 	<div>
+		<%= f.label :last_name, "Apellidos" %>
+		<%= f.text_field :last_name, :id => :last_name %>
+	</div>
+	
+	<div>
 		<%= f.label :url, "Url" %>
 		<%= f.text_field :url, :id => :url %>
 	</div>
@@ -14,6 +19,11 @@
 	<div>
 		<%= f.label :region, "Region" %>
 		<%= f.select :region_id, Region.all.sort_by(&:name).collect {|region| [region.name, region.id]} %>
+	</div>
+	
+	<div>
+		<%= f.label :more_info, "Más Información" %>
+		<%= f.text_field :more_info, :id => :more_info %>
 	</div>
 	
 	<div>
