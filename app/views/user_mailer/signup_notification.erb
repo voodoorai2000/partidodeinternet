@@ -5,4 +5,4 @@ Tu cuenta se ha creado.
 
 Visita esta url para activar tu cuenta:
 
-  <%=h @url %>
+  <%= activate_url(:activation_code => @user.activation_code) %>
