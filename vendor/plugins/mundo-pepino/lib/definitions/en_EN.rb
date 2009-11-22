@@ -578,8 +578,6 @@ Given /^que borramos al abogado "([^\"]*)" de la base de datos$/ do |nombre|
   Lawyer.find_by_name(nombre).delete
 end
 
-
-
 #When /^me logeo como (?:ese|el) ([^\"]*)$/ do |modelo|
 When /^I login as (?:ese|el) ([^\"]*)$/ do |modelo|
   resource = last_mentioned_of(modelo)
