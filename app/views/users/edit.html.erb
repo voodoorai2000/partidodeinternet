@@ -23,10 +23,14 @@
 	
 	<%= render :partial => "areas", 
   				   :locals => { :f => f, :object => @user } %>
+ 
+ 
+
+ 
+<h2>¿Algo más que nos quieras decir?</h2>
   
-	<div>
-		<%= f.label :more_info, "Más Información" %>
-		<%= f.text_field :more_info, :id => :more_info %>
+  <div>
+		<%= f.text_area :more_info, :id => :more_info %>
 	</div>
 	
 	<div>
