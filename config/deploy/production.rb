@@ -4,7 +4,7 @@
  role :web, "#{PRODUCTION_SERVER_IP}"  
  role :db,  "#{PRODUCTION_SERVER_IP}", :primary => true
  
- set :deploy_to, "/var/www/apps/#{PROJECT_NAME}"
+ set :deploy_to, "/var/www/apps/registro_pdi"
  
  desc "create symbolic link to backup_fu.yml"
  task :create_symbolic_links_for_backups, :roles => :app do

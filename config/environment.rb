@@ -6,7 +6,7 @@ AWS_ACCESS_KEY        = "123"
 AWS_SECRET_ACCESS_KEY = "123"
 HOAPTOAD_KEY          = "123"
 STAGING_SERVER_IP     = "209.20.74.161"
-PRODUCTION_SERVER_IP  = "111.111.111.111"
+PRODUCTION_SERVER_IP  = "209.20.74.161"
 
  
 throw "The project's name in environment.rb is blank" if PROJECT_NAME.empty?
