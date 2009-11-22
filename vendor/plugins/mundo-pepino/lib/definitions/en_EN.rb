@@ -1,7 +1,7 @@
 numero = '(the|two|three|a|\d+)'
 numbers = '(the|two|three|a|\d+)'
 cuyo = '(?:cuy[oa]s?|que tienen? como)'
-model_names = "(regions?|users?)"
+model_names = "(regions?|users?|areas?)"
 
 # Creación simple con nombre opcional
 #Given /^(?:que tenemos )?(#{numero}) (?!.+ #{cuyo})(.+?)(?: (?:llamad[oa]s? )?['"](.+)["'])?$/i do |numero, modelo, nombre|
@@ -232,7 +232,8 @@ When /^(?:que )?elijo (?:la|el)? ?(.+) ['"](.+)["']$/i do |campo, valor|
   choose(campo_to_field(campo).to_s + '_' + valor.downcase.to_underscored)
 end
 
-When /^(?:que )?marco (?:las|los|la|el|)? ?(.+)$/i do |campo|
+#When /^(?:que )?marco (?:las|los|la|el|)? ?(.+)$/i do |campo|
+When /^I check (.+)$/i do |campo|
   find_field_and_do_with_webrat :check, campo
 end
 

@@ -21,6 +21,9 @@
 		<%= f.select :region_id, Region.all.sort_by(&:name).collect {|region| [region.name, region.id]} %>
 	</div>
 	
+	<%= render :partial => "areas", 
+  				   :locals => { :f => f, :object => @user } %>
+  
 	<div>
 		<%= f.label :more_info, "Más Información" %>
 		<%= f.text_field :more_info, :id => :more_info %>

@@ -3,11 +3,27 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   belongs_to :region
   
+  has_many :colaborations
+  has_many :areas, :through => :colaborations
+  
+  accepts_nested_attributes_for :areas
+  
   named_scope :with_region, :conditions => :region_id
   
   def self.ranking
     with_region.group_by(&:region).sort_by{|region, users| users.size}.reverse
   end
+  
+  def has_area?(area)
+    areas.include?(area)
+  end
+  
+  
+  
+  
+  
+  
+  #Authentication
   
   include Authentication
   include Authentication::ByPassword
@@ -31,8 +47,9 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :last_name, :password, :password_confirmation, :url, :region_id, :more_info
-
+  #attr_accessor :areas_ids
+  attr_accessible :login, :email, :name, :last_name, :password, :password_confirmation, :url, :region_id, :more_info, :area_ids
+  
   before_validation :set_password, :on => :create
   
   def set_password

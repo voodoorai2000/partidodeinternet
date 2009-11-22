@@ -18,3 +18,7 @@ end
 Factory.define :region do |f|
   f.name { "Factory Region" }
 end
+
+Factory.define :area do |f|
+  f.name { "Factory Area" }
+end
