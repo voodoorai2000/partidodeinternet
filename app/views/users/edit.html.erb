@@ -1,40 +1,42 @@
-<h2>Tus Datos</h2>
+<div class="regis_form">	
+  <h2>Tus Datos</h2>
 
-<% form_for @user do |f| -%>
-  <div>
-		<%= f.label :name, "Nombre" %>
-		<%= f.text_field :name, :id => :name %>
-	</div>
-	
-	<div>
-		<%= f.label :last_name, "Apellidos" %>
-		<%= f.text_field :last_name, :id => :last_name %>
-	</div>
-	
-	<div>
-		<%= f.label :url, "Url" %>
-		<%= f.text_field :url, :id => :url %>
-	</div>
-	
-	<div>
-		<%= f.label :region, "Region" %>
-		<%= f.select :region_id, Region.all.sort_by(&:name).collect {|region| [region.name, region.id]} %>
-	</div>
-	
-	<%= render :partial => "areas", 
-  				   :locals => { :f => f, :object => @user } %>
- 
- 
-
- 
-<h2>¿Algo más que nos quieras decir?</h2>
+  <% form_for @user do |f| -%>
+    <div>
+  		<%= f.label :name, "Nombre" %>
+  		<%= f.text_field :name, :id => :name %>
+  	</div>
+  	
+  	<div>
+  		<%= f.label :last_name, "Apellidos" %>
+  		<%= f.text_field :last_name, :id => :last_name %>
+  	</div>
+  	
+  	<div>
+  		<%= f.label :url, "Url" %>
+  		<%= f.text_field :url, :id => :url %>
+  	</div>
+  	
+  	<div>
+  		<%= f.label :region, "Region" %>
+  		<%= f.select :region_id, Region.all.sort_by(&:name).collect {|region| [region.name, region.id]} %>
+  	</div>
+  	
+  	<%= render :partial => "areas", 
+    				   :locals => { :f => f, :object => @user } %>
+   
+   
   
-  <div>
-		<%= f.text_area :more_info, :id => :more_info %>
-	</div>
-	
-	<div>
-		<%= f.submit "Enviar", :class => "button" %>
-	</div>
-	
-<% end -%>
+   
+  <h2>¿Algo más que nos quieras decir?</h2>
+    
+    <div>
+  		<%= f.text_area :more_info, :id => :more_info %>
+  	</div>
+  	
+  	<div>
+  		<%= f.submit "Enviar", :class => "button" %>
+  	</div>
+  	
+  <% end -%>
+</div>
