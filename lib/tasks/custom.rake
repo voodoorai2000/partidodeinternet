@@ -29,9 +29,12 @@ end
 namespace :admin do
   desc "create an admin user"
   task :create do
-    User.create!(:admin => true, 
+    user = User.create!(:admin => true, 
                  :email => "admin@partidodeinternet.es", 
                  :password => "testtest",
-                 :password_confirmation => "testtest").activate!
+                 :password_confirmation => "testtest")
+    user.activate!
+    user.admin = true
+    user.save!
   end
 end
