@@ -1,3 +1,4 @@
+require(File.join Rails.root, 'config', 'environment')
 
 namespace :test do
   desc "Run all specs & features"
@@ -23,4 +24,14 @@ namespace :features do
     sh "script/cucumber features --profile caracteristicas"
   end
 
+end
+
+namespace :admin do
+  desc "create an admin user"
+  task :create do
+    User.create!(:admin => true, 
+                 :email => "admin@partidodeinternet.es", 
+                 :password => "testtest",
+                 :password_confirmation => "testtest").activate!
+  end
 end
