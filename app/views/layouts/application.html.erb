@@ -102,6 +102,8 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,lo
 
 <!-- ============ SEARCH ========= -->
 
+
+
 <form method="get" id="searchform"  
 action="http://partidodeinternet.es/"> 
 <input type="text" value="Buscar"  
@@ -113,12 +115,11 @@ onfocus="if (this.value == 'Buscar')
 <input type="hidden" id="searchsubmit" /> 
 </form>
 
-
 </div><!-- cierra grid_16 header-->
 
+<%= render :partial => "users/user_bar"%>
+
 <div class="clear"></div>
-
-
 
 <div class="container_16" >
 
