@@ -1,10 +1,5 @@
 require(File.join Rails.root, 'config', 'environment')
 
-namespace :test do
-  desc "Run all specs & features"
-  task :all => [ "spec", "features:all" ]
-end
-
 namespace :features do
   desc "Run all features"
   task :all => [ :webrat, :selenium ]
@@ -19,11 +14,6 @@ namespace :features do
     sh "script/cucumber --profile selenium"
   end
   
-  desc "Run spanish features"
-  task :selenium do
-    sh "script/cucumber features --profile caracteristicas"
-  end
-
 end
 
 namespace :admin do
