@@ -1,14 +1,7 @@
+require File.expand_path(File.dirname(__FILE__) + '/mundo_pepino_env.rb')
 
-require File.expand_path(File.dirname(__FILE__) + '/env.rb')
-require File.expand_path(File.dirname(__FILE__) + '/webrat_helpers.rb')
-require 'webrat/rails'
-
-#Cucumber::Rails.use_transactional_fixtures
+Cucumber::Rails::World.use_transactional_fixtures = true
 
 Webrat.configure do |config|
   config.mode = :rails
-end
-
-After do
-  empty_database
 end
