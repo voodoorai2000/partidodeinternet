@@ -1,5 +1,6 @@
+# http://www.pivotaltracker.com/story/show/1901605
 @selenium
-Feature: Delete User
+Feature: Delete user
 
 	In order delete users that are not coming to the event
 	As an admin

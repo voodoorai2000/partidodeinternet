@@ -1,6 +1,6 @@
+# http://www.pivotaltracker.com/story/show/1901606
 @webrat
-
-Feature: Editar Perfil
+Feature: Edit user
 
 	In order..
 	As an...

@@ -1,4 +1,5 @@
-Feature: Listado de Usuarios
+# http://www.pivotaltracker.com/story/show/1901607
+Feature: User list
 
   Para que...
   Como un...
