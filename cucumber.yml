@@ -1,12 +1,5 @@
-webrat:   --require caracteristicas/support/webrat_env.rb --language=en caracteristicas --tags @webrat
-selenium: --require caracteristicas/support/selenium_env.rb --language=en caracteristicas --tags @selenium
-autotest: --require caracteristicas/support/webrat_env.rb --language=en caracteristicas --tags @current
-current:  --require caracteristicas/support/webrat_env.rb --language=en caracteristicas --tags @current
-current_with_selenium: --require caracteristicas/support/selenium_env.rb --language=en caracteristicas --tags @current
-sphinx:   --require caracteristicas/support/webrat_env.rb  --language=en caracteristicas --tags @sphinx
-all:      --require caracteristicas/support/selenium_env.rb --language=en caracteristicas --tags @current @webrat @selenium @sphinx
-webrat_html:     --require caracteristicas/support/webrat_env.rb --language=en caracteristicas --tags @webrat --format html --out webrat_features.html
-selenium_html:   --require caracteristicas/support/selenium_env.rb --language=en caracteristicas --tags @selenium --format html --out selenium_features.html
-
-
-test:   --require features/support/webrat_env.rb  --language=en features --tags @webrat
+webrat:                --require features/support/webrat_env.rb   --language=en features --tags @webrat
+selenium:              --require features/support/selenium_env.rb --language=en features --tags @selenium
+current:               --require features/support/webrat_env.rb   --language=en features --tags @current
+current_with_selenium: --require features/support/selenium_env.rb --language=en features --tags @current
+all:                   --require features/support/selenium_env.rb --language=en features --tags @webrat --tags @selenium --tags @current

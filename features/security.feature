@@ -1,11 +1,11 @@
-# http://www.pivotaltracker.com/story/show/1901610
-@webrat
+# http://www.pivotaltracker.com/story/show/1902153
 Feature: Security
 
 	So that only the right person can edit a profile
 	As an admin
 	I want to setup permissions
 
+  @webrat
 	Scenario Outline: Access to edit a profile
 		  Given 2 users "Hector, Jose"
 		 	 When I login as <login>
@@ -18,6 +18,7 @@ Feature: Security
 	        | an admin | Hector  | I will be at the edit page of user "Hector" |
 	        | "Hector" | Jose    | I will be redirected to "/login"            |
 	
+	@webrat
 	Scenario Outline: Access to edit a profile
 		  Given 2 users "Hector, Jose"
 		 	 When I login as <login>
