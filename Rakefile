@@ -33,3 +33,6 @@
                                              "--exclude /gems/,/Library/,spec"]}
       end
 
+   Rake::Task[:default].clear
+   task :default => "features:all"
+  

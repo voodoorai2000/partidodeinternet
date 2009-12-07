@@ -11,12 +11,12 @@ namespace :features do
   
   desc "Run webrat features"
   task :webrat do
-    sh "script/cucumber features --profile webrat"
+    sh "script/cucumber --profile webrat"
   end
   
   desc "Run selenium features"
   task :selenium do
-    sh "script/cucumber features --profile selenium"
+    sh "script/cucumber --profile selenium"
   end
   
   desc "Run spanish features"
