@@ -4,13 +4,14 @@ Feature: Listado de Usuarios
   Como un...
   Quiero...
 
-  @webrat
+  @current
   Scenario: Ver todos los usuarios
   	 Given the following users:
   				 | name   | email          | url                 |
   				 | Jose   | jose@gmail.com | http://www.jose.com |
   				 | Ana    | ana@gmail.com  | http://www.ana.com  |
-  		When I go to "/users"
+  		When I go to "/"
+  		 And I click on link "usuarios registrados"
       Then I will see the text "2 Usuarios Registrados"
   		Then I will see the user "Ana"
 			 But I will not see the text "ana@gmail.com"

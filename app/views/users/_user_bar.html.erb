@@ -4,4 +4,6 @@
 <% else -%>
   <div id="user-bar-action"  ><%= link_to "Log in",  login_path,  { :title => "Log in" } %>
 <% end -%>
-<%= link_to "Ranking", :controller => "users", :action => "ranking" %>
+
+<p><%= link_to "Ranking", :controller => "users", :action => "ranking" %></p>
+<p><%= link_to "Usuarios registrados", users_path %></p>
