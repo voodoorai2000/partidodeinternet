@@ -672,6 +672,11 @@ When /^I click on (ajax link|link) "([^\"]*)" next to #{model_names} "([^\"]*)"$
 end
 
 
+#Selenium
+When /^I confirm the "([^\"]*)" prompt$/ do |message|
+  selenium.get_confirmation.should == unquote(message)
+end
+
 #THENS
 
 #comprobacion en base de datos de atributos de un modelo desde fit table
