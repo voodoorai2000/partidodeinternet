@@ -2,7 +2,7 @@ require(File.join Rails.root, 'config', 'environment')
 
 namespace :features do
   desc "Run all features"
-  task :all => [ :db, :webrat, :selenium ]
+  task :all => [ :db, :webrat ]
   
   desc "Prepare test database"
   task :db do
