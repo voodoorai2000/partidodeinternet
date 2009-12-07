@@ -2,7 +2,12 @@ require(File.join Rails.root, 'config', 'environment')
 
 namespace :features do
   desc "Run all features"
-  task :all => [ :webrat, :selenium ]
+  task :all => [ :db, :webrat, :selenium ]
+  
+  desc "Prepare test database"
+  task :db do
+    Rake::Task['db:test:prepare'].invoke
+  end
   
   desc "Run webrat features"
   task :webrat do
