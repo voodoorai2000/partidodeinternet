@@ -1,0 +1,9 @@
+<% if logged_in? %>
+  <div> Identificado como <%= link_to current_user.email, edit_user_path(current_user) %> </div>
+  <div> <%= link_to "Log out", logout_path, { :title => "Log out" } %> </div>
+<% else %>
+  <div> <%= link_to "Log in",  login_path,  { :title => "Log in" } %> </div>
+<% end %>
+
+<div><%= link_to "Ranking", "/ranking" %></div>
+<div><%= link_to "Usuarios registrados", users_path %></div>

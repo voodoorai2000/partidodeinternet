@@ -1,9 +1,0 @@
-<% if logged_in? -%>
-  <div id="user-bar-greeting">Identificado como <%= link_to current_user.email, edit_user_path(current_user) %></div>
-  <div id="user-bar-action"> <%= link_to "Log out", logout_path, { :title => "Log out" } %> </div>
-<% else -%>
-  <div id="user-bar-action"  ><%= link_to "Log in",  login_path,  { :title => "Log in" } %>
-<% end -%>
-
-<p><%= link_to "Ranking", :controller => "users", :action => "ranking" %></p>
-<p><%= link_to "Usuarios registrados", users_path %></p>
