@@ -80,8 +80,8 @@ Rails::Initializer.run do |config|
    config.gem  'thoughtbot-factory_girl',
                :lib    => false,
                :source => "http://gems.github.com"
-   config.gem  'jscruggs-metric_fu',
-               :lib => 'metric_fu'
+   #config.gem  'jscruggs-metric_fu',
+   #            :lib => 'metric_fu'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

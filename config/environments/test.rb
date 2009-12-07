@@ -29,3 +29,7 @@ config.action_mailer.delivery_method = :activerecord
 # config.active_record.schema_format = :sql
 
 config.action_mailer.default_url_options = { :host => "localhost:3001" }
+
+config.gem 'ar_mailer', 
+           :lib => 'action_mailer/ar_mailer',
+           :version  => '1.5.0'
