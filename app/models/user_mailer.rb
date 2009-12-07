@@ -18,4 +18,14 @@ class UserMailer < ActionMailer::Base
       @sent_on     = Time.now
       @body[:user] = user
     end
+    
+    #tmp until we install ar_mailer in the continous integration server
+    def perform_delivery_activerecord(mail)
+      email_class = ActionMailer::ARMailer.email_class
+
+      mail.destinations.each do |destination|
+        email_class.create :mail => mail.encoded, :to => destination,
+                           :from => mail.from.first
+      end
+    end
 end
